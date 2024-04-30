@@ -1,2 +1,5 @@
 .vscode
 *.dSYM/
+*/obj_files/*
+*/output/*
+
