@@ -1,12 +1,20 @@
-#include <iostream>
-using namespace std;
-//g++ cadenstestworld.cpp -o test && ./test
+#include "include/cadenstestworld.h"
 
-int main(){
-    int x;
-    cout << "what is your number" << "\n";
-  
-    cin >> x;
-    cout << "your number is " << x;
-    return 0;
+Test::Test() {}
+
+Test::Test(int x, int y) {
+    this->x = x;
+    this->y = y;
+}
+
+int Test::getx() {
+    return x;
+}
+
+int Test::gety() {
+    return y;
+}
+
+int Test::add() {
+    return y + x;
 }
