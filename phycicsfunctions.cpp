@@ -15,11 +15,16 @@ struct Vector3D
   double x0;
   double y0;
   double z0;
+  
 };
 
 // let the variables begin
 double mass = 0;
-
+double radius;
+double dX;
+double dY;
+double dZ;
+bool firsttime;
 
 class PhysicsFunctions
 {
@@ -38,9 +43,9 @@ public:
         pos.x = 0;
         pos.y = 0;
         pos.z = 0;
-        pos.x0 = 0;
-        pos.y0 = 0;
-        pos.z0 = 0;
+        pos.x0 = 1;
+        pos.y0 = 1;
+        pos.z0 = 1;
 
         velo.x = 0;
         velo.y = 0;
@@ -49,12 +54,12 @@ public:
         velo.y0 = 0;
         velo.z0 = 0;
 
-        accel.x = 1;
-        accel.y = 1;
-        accel.z = 1;
-        accel.x0 = 1;
-        accel.y0 = 1;
-        accel.z0 = 1;
+        accel.x = 0;
+        accel.y = 0;
+        accel.z = 0;
+        accel.x0 = 0;
+        accel.y0 = 0;
+        accel.z0 = 0;
 
         fore.x = 1;
         fore.y = 1;
@@ -63,27 +68,107 @@ public:
         fore.y0 = 0;
         fore.z0 = 0;
         mass = 1;
+        firsttime = true;
 
+    }
+    PhysicsFunctions(double X,double Y,double Z, double X0, double Y0, double Z0,double VX,double VY,double VZ, double VX0, double VY0, double VZ0,double AX,double AY,double AZ, double AX0, double AY0, double AZ0,double FX,double FY,double FZ, double FX0, double FY0, double FZ0,double mas,double rad) {
+
+        // assigns values on construction
+        pos.x = X;
+        pos.y = Y;
+        pos.z = Z;
+        pos.x0 = X0;
+        pos.y0 = Y0;
+        pos.z0 = Z0;
+
+        velo.x = VX;
+        velo.y = VY;
+        velo.z = VZ;
+        velo.x0 = VX0;
+        velo.y0 = VY0;
+        velo.z0 = VZ0;
+
+        accel.x = AX;
+        accel.y = AY;
+        accel.z = AZ;
+        accel.x = AX0;
+        accel.y = AY0;
+        accel.z = AZ0;
+
+        fore.x = FX;
+        fore.y = FY;
+        fore.z = FZ;
+        fore.x = FX0;
+        fore.y = FY0;
+        fore.z = FZ0;
+        mass = mas;
+        radius = rad;
+        firsttime = true;
+
+    }
+     PhysicsFunctions(double X,double Y,double Z, double X0, double Y0, double Z0,double VX,double VY,double VZ, double VX0, double VY0, double VZ0,double AX,double AY,double AZ, double AX0, double AY0, double AZ0,double FX,double FY,double FZ, double FX0, double FY0, double FZ0,double mas,double dx,double dy,double dz) {
+
+        // assigns values on construction
+        pos.x = X;
+        pos.y = Y;
+        pos.z = Z;
+        pos.x0 = X0;
+        pos.y0 = Y0;
+        pos.z0 = Z0;
+
+        velo.x = VX;
+        velo.y = VY;
+        velo.z = VZ;
+        velo.x0 = VX0;
+        velo.y0 = VY0;
+        velo.z0 = VZ0;
+
+        accel.x = AX;
+        accel.y = AY;
+        accel.z = AZ;
+        accel.x = AX0;
+        accel.y = AY0;
+        accel.z = AZ0;
+
+        fore.x = FX;
+        fore.y = FY;
+        fore.z = FZ;
+        fore.x = FX0;
+        fore.y = FY0;
+        fore.z = FZ0;
+        mass = mas;
+        dX = dx;
+        dY = dy;
+        dZ = dz;
+        firsttime = true;
     }
 
     void getpos(){
-        cout << "(" << pos.x << ","<< pos.y << ","<< pos.z << "," << ")";
+        cout << "pos" << "(" << pos.x << ","<< pos.y << ","<< pos.z << "," << ")"<< "\n";
     }
     void getvelo(){
-        cout << "(" << velo.x << ","<< velo.y << ","<< velo.z << "," << ")";
+        cout << "velo"<< "(" << velo.x << ","<< velo.y << ","<< velo.z << "," << ")"<< "\n";
     }
     void getaccel(){
-        cout << "(" << accel.x << ","<< accel.y << ","<< accel.z << "," << ")";
+        cout << "accel" <<"(" << accel.x << ","<< accel.y << ","<< accel.z << "," << ")"<< "\n";
+    }
+    double getgravity(){
+        return mass*9.8;
     }
     void updateobj(double time){
-        updatevelo(time);
-        updatepos(time);
         updateaccel(time);
+        //getaccel();
+        updatevelo(time);
+        getvelo();
+        updatepos(time);
+        getpos();
     }
     void updatepos(double time){
+       
         pos.x = pos.x0 + velo.x0*time + .5*accel.x*pow(time,2);
-        pos.y = pos.y0 + velo.y0*time + .5*accel.x*pow(time,2);
-        pos.z = pos.z0 + velo.z0*time + .5*accel.x*pow(time,2);
+        pos.y = pos.y0 + velo.y0*time + .5*accel.y*pow(time,2);
+        pos.z = pos.z0 + velo.z0*time + .5*accel.z*pow(time,2);
+        
     }
     void updatevelo(double time){
         velo.x = velo.x0 + accel.x*time;
@@ -94,6 +179,21 @@ public:
         accel.x = fore.x/mass;
         accel.y = fore.y/mass;
         accel.z = fore.z/mass;
+    }
+    void updateforce(double forcex[],double forcey[],double forcez[]){
+        for (int i = 0; i < sizeof(forcex); i++)
+        {
+        fore.x += forcex[i];
+        }
+        for (int i = 0; i < sizeof(forcey); i++)
+        {
+        fore.y += forcey[i];
+        }
+        for (int i = 0; i < sizeof(forcez); i++)
+        {
+        fore.z += forcez[i];
+        }
+
     }
 };
 
@@ -109,9 +209,11 @@ int main(){
     for (int i = 0; i < runs; i++)
     {
     time += .1;
+    cout << "time = " << time<< "\n";
     engine.updateobj(time);
     }
-    engine.getpos();
+    //engine.updateobj(time);
+    //engine.getpos();
   
     /*cout << "this is the position" << "\n";
     cout << engine.pos.x << "," << engine.pos.y << "," << engine.pos.z << "\n";
