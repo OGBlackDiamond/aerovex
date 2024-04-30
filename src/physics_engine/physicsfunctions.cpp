@@ -4,7 +4,7 @@ g++ phycicsfunctions.cpp -o test && ./test
 #include <ctgmath>
 #include <iostream>
 using namespace std;
-
+//asfsdfsd
 // defines struct shells
 
 struct Vector3D
