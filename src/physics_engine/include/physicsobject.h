@@ -43,9 +43,15 @@ double dZ;
 
         
 
-    void getpos();
-    void getvelo();
-    void getaccel();
+    int getposx();
+    int getposy();
+    int getposz();
+    int getvelox();
+    int getveloy();
+    int getveloz();
+    int getaccelx();
+    int getaccely();
+    int getaccelz();
     double getgravity();
     void updateobj(double time);
     void updatepos(double time);

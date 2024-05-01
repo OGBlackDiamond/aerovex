@@ -115,25 +115,43 @@ using namespace std;
         
     }
 
-    void Physicsobject::getpos(){
-        cout << "pos" << "(" << pos.x << ","<< pos.y << ","<< pos.z << "," << ")"<< "\n";
+    int Physicsobject::getposx(){
+        return pos.x;
     }
-    void Physicsobject::getvelo(){
-        cout << "velo"<< "(" << velo.x << ","<< velo.y << ","<< velo.z << "," << ")"<< "\n";
+    int Physicsobject::getposy(){
+        return pos.y;
     }
-    void Physicsobject::getaccel(){
-        cout << "accel" <<"(" << accel.x << ","<< accel.y << ","<< accel.z << "," << ")"<< "\n";
+    int Physicsobject::getposz(){
+        return pos.z;
+    }
+    int Physicsobject::getvelox(){
+        return velo.x;
+    }
+    int Physicsobject::getveloy(){
+        return velo.y;
+    }
+    int Physicsobject::getveloz(){
+        return velo.z;
+    }
+    int Physicsobject::getaccelx(){
+        return accel.x;
+    }
+    int Physicsobject::getaccely(){
+        return accel.y;
+    }
+    int Physicsobject::getaccelz(){
+        return accel.z;
     }
     double Physicsobject::getgravity(){
         return mass*9.8;
     }
     void Physicsobject::updateobj(double time){
         updateaccel(time);
-        //getaccel();
+        
         updatevelo(time);
-        getvelo();
+        
         updatepos(time);
-        getpos();
+        
     }
     void Physicsobject::updatepos(double time){
        

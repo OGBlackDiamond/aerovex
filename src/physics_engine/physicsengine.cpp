@@ -3,6 +3,8 @@
 #include "include/physicsobject.h"
 using namespace std;
 // instantiates a new phyfunc class
+// g++ phycicsengine.cpp -o test && ./test
+
 Physicsobject engine;
 
 // main methed used for testing will be removed later
@@ -10,9 +12,8 @@ int main(){
     double time;
     int runs;
     cin >> runs;
-    for (int i = 0; i < runs; i++)
-    {
-    time += .1;
+    for (int i = 0; i < runs; i++){
+    time += 0.1;
     cout << "time = " << time<< "\n";
     engine.updateobj(time);
     }
