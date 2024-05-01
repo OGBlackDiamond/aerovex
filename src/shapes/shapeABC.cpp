@@ -1,7 +1,8 @@
 #include "include/shapeABC.h"
-class ShapeABC {
-
-public:
 
 
+ShapeABC::ShapeABC();
+
+ShapeABC::coordinates ShapeABC::getCoords() {
+    return this->coords;
 }

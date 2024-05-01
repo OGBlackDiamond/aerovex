@@ -5,14 +5,15 @@ using namespace std;
 
 Test test(1, 2);
 
-struct {
-    int x = 1;
-    int y = 1;
-} deez;
+struct coord{
+    int x;
+    int y;
+};
+
 
 int main(){
-    test.setCoords(deez)
-    cout << test.getCoords() << "\n";
+    test.setCoords(10, 20);
+    cout << test.getCoords().x << "\n";
     cout << test.gety() << "\n";
     cout << test.add() << "\n";
     return 0;

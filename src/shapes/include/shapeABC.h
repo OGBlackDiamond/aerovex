@@ -3,11 +3,14 @@
 class ShapeABC {
 
 public:
-    struct getCoords();
+
+    ShapeABC();
+
+    coordinates getCoords();
 
 private:
 
-    struct {
+    struct coordinates{
         int x;
         int y;
         int z;

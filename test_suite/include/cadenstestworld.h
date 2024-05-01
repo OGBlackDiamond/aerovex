@@ -3,7 +3,7 @@
 class Test {
 
 private:
-    struct {
+    struct coord{
         int x;
         int y;
     } coords;
@@ -22,7 +22,7 @@ public:
 
     int add();
 
-    struct getCoords();
+    coord getCoords();
 
-    void setCoords(struct coords);
+    void setCoords(int x, int y);
 };

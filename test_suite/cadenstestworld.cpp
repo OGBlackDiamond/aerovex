@@ -19,10 +19,12 @@ int Test::add() {
     return y + x;
 }
 
-struct Test::getCoords() {
-    return coords;
+Test::coord Test::getCoords() {
+
+    return (coords);
 }
 
-void Test::setCoords(struct coords) {
-    this->coords = coords;
+void Test::setCoords(int x, int y) {
+    coords.x = x;
+    coords.y = y;
 }
