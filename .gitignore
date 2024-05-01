@@ -1,5 +1,9 @@
 .vscode
 *.dSYM/
-*/obj_files/*
-*/output/*
+
+obj_files/*
+output/*
+
+test_suite/obj_files/*
+test_suite/output/*
 
