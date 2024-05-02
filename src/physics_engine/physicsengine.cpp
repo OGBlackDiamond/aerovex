@@ -1,11 +1,11 @@
 #include <ctgmath>
 #include <iostream>
-#include "include/physicsobject.h"
+#include "include/PhysicsObject.h"
 using namespace std;
 // instantiates a new phyfunc class
 // g++ phycicsengine.cpp -o test && ./test
 
-Physicsobject engine;
+PhysicsObject engine;
 
 // main methed used for testing will be removed later
 int main(){
@@ -18,7 +18,7 @@ int main(){
     engine.updateobj(time);
     }
     //engine.updateobj(time);
-    //engine.getpos();
+    //engine.getPos();
   
     /*cout << "this is the position" << "\n";
     cout << engine.pos.x << "," << engine.pos.y << "," << engine.pos.z << "\n";

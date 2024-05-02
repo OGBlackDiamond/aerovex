@@ -1,6 +1,13 @@
 #define TEST_H
 
 class Test {
+
+private:
+    struct {
+        int x;
+        int y;
+    } coords;
+
 public:
     int x;
     int y;
@@ -14,4 +21,8 @@ public:
     int gety();
 
     int add();
+
+    struct getCoords();
+
+    void setCoords(struct coords);
 };

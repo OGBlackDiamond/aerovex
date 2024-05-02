@@ -3,13 +3,11 @@ g++ phycicsfunctions.cpp -o test && ./test
 */
 #include <ctgmath>
 #include <iostream>
-#include "include/physicsobject.h"
+#include "include/PhysicsObject.h"
 using namespace std;
 
-
-
     // constructor for the class
-    Physicsobject::Physicsobject() {
+    PhysicsObject::PhysicsObject() {
 
         // assigns values on construction
         pos.x = 0;
@@ -42,135 +40,94 @@ using namespace std;
         mass = 1;
 
     }
-    Physicsobject::Physicsobject(double X,double Y,double Z, double X0, double Y0, double Z0,double VX,double VY,double VZ, double VX0, double VY0, double VZ0,double AX,double AY,double AZ, double AX0, double AY0, double AZ0,double FX,double FY,double FZ, double FX0, double FY0, double FZ0,double mas,double rad) {
+    PhysicsObject::PhysicsObject(Vector3D position, Vector3D velocity, Vector3D acceleration, Vector3D force, double mass, double radius) {
 
         // assigns values on construction
-        pos.x = X;
-        pos.y = Y;
-        pos.z = Z;
-        pos.x0 = X0;
-        pos.y0 = Y0;
-        pos.z0 = Z0;
+        pos = position;
 
-        velo.x = VX;
-        velo.y = VY;
-        velo.z = VZ;
-        velo.x0 = VX0;
-        velo.y0 = VY0;
-        velo.z0 = VZ0;
+        velo = velocity;
 
-        accel.x = AX;
-        accel.y = AY;
-        accel.z = AZ;
-        accel.x = AX0;
-        accel.y = AY0;
-        accel.z = AZ0;
+        accel = acceleration
 
-        fore.x = FX;
-        fore.y = FY;
-        fore.z = FZ;
-        fore.x = FX0;
-        fore.y = FY0;
-        fore.z = FZ0;
-        mass = mas;
-        radius = rad;
-        
+        fore = force;
 
+        this->mass = mas;
+        this->radius = radius;
     }
-     Physicsobject::Physicsobject(double X,double Y,double Z, double X0, double Y0, double Z0,double VX,double VY,double VZ, double VX0, double VY0, double VZ0,double AX,double AY,double AZ, double AX0, double AY0, double AZ0,double FX,double FY,double FZ, double FX0, double FY0, double FZ0,double mas,double dx,double dy,double dz) {
+
+     PhysicsObject::PhysicsObject(Vector3D position, Vector3D velocity, Vector3D acceleration, Vector3D force, double mass, double dx, double dy, double dz) {
 
         // assigns values on construction
-        pos.x = X;
-        pos.y = Y;
-        pos.z = Z;
-        pos.x0 = X0;
-        pos.y0 = Y0;
-        pos.z0 = Z0;
+        pos = position;
 
-        velo.x = VX;
-        velo.y = VY;
-        velo.z = VZ;
-        velo.x0 = VX0;
-        velo.y0 = VY0;
-        velo.z0 = VZ0;
+        velo = velocity;
 
-        accel.x = AX;
-        accel.y = AY;
-        accel.z = AZ;
-        accel.x = AX0;
-        accel.y = AY0;
-        accel.z = AZ0;
+        accel = acceleration
 
-        fore.x = FX;
-        fore.y = FY;
-        fore.z = FZ;
-        fore.x = FX0;
-        fore.y = FY0;
-        fore.z = FZ0;
-        mass = mas;
+        fore = force;
+
+        this->mass = mas;
+
         dX = dx;
         dY = dy;
         dZ = dz;
-        
-        
     }
 
-    int Physicsobject::getposx(){
+    int PhysicsObject::getPosX(){
         return pos.x;
     }
-    int Physicsobject::getposy(){
+    int PhysicsObject::getPosY(){
         return pos.y;
     }
-    int Physicsobject::getposz(){
+    int PhysicsObject::getPosZ(){
         return pos.z;
     }
-    int Physicsobject::getvelox(){
+    int PhysicsObject::getVeloX(){
         return velo.x;
     }
-    int Physicsobject::getveloy(){
+    int PhysicsObject::getVeloY(){
         return velo.y;
     }
-    int Physicsobject::getveloz(){
+    int PhysicsObject::getVeloZ(){
         return velo.z;
     }
-    int Physicsobject::getaccelx(){
+    int PhysicsObject::getAccelX(){
         return accel.x;
     }
-    int Physicsobject::getaccely(){
+    int PhysicsObject::getaAccelY(){
         return accel.y;
     }
-    int Physicsobject::getaccelz(){
+    int PhysicsObject::getAccelZ(){
         return accel.z;
     }
-    double Physicsobject::getgravity(){
+    double PhysicsObject::getGravity(){
         return mass*9.8;
     }
-    void Physicsobject::updateobj(double time){
-        updateaccel(time);
-        
-        updatevelo(time);
-        
-        updatepos(time);
-        
+    void PhysicsObject::updateObj(double time){
+        updateAccel(time);
+
+        updateVelo(time);
+
+        updatePos(time);
     }
-    void Physicsobject::updatepos(double time){
+    void PhysicsObject::updatePos(double time){
        
         pos.x = pos.x0 + velo.x0*time + .5*accel.x*pow(time,2);
         pos.y = pos.y0 + velo.y0*time + .5*accel.y*pow(time,2);
         pos.z = pos.z0 + velo.z0*time + .5*accel.z*pow(time,2);
         
     }
-    void Physicsobject::updatevelo(double time){
+    void PhysicsObject::updatevelo(double time){
         velo.x = velo.x0 + accel.x*time;
         velo.y = velo.y0 + accel.y*time;
         velo.z = velo.z0 + accel.z*time;
     }
-    void Physicsobject::updateaccel(double time){
+    void PhysicsObject::updateaccel(double time){
         accel.x = fore.x/mass;
         accel.y = fore.y/mass;
         accel.z = fore.z/mass;
     }
-    void Physicsobject::updateforce(double forcex[],double forcey[],double forcez[]){
+    void PhysicsObject::updateforce(double forcex[],double forcey[],double forcez[]){
         for (int i = 0; i < sizeof(forcex); i++)
         {
         fore.x += forcex[i];
@@ -185,10 +142,10 @@ using namespace std;
         }
 
     }
-    void Physicsobject::detectcollisions(){
-if (true){
+    void PhysicsObject::detectcollisions(){
+        if (true){
 
-}
+        }
     };
 
 

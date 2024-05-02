@@ -18,3 +18,11 @@ int Test::gety() {
 int Test::add() {
     return y + x;
 }
+
+struct Test::getCoords() {
+    return coords;
+}
+
+void Test::setCoords(struct coords) {
+    this->coords = coords;
+}

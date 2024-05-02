@@ -20,7 +20,6 @@ physicsfunctions.cpp:
 
 
 
-
 test: main.o cadenstestworld.o
 	g++ $(WD)/test_suite/obj_files/cadenstestworld.o $(WD)/test_suite/obj_files/main.o -o $(WD)/test_suite/output/test.exe
 
