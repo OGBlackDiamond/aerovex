@@ -2,20 +2,29 @@
 
 class ShapeABC {
 
+private:
+
+    struct coordinates {
+        int x;
+        int y;
+        int z;
+    } coords;
+
+    struct color {
+        int r;
+        int g;
+        int b;
+    } shapeColor;
+
 public:
 
     ShapeABC();
 
     coordinates getCoords();
 
-private:
+    color getColor();
 
-    struct coordinates{
-        int x;
-        int y;
-        int z;
-    } coords;
+    void setCoords(int x, int y, int z);
 
-
-
-}
+    void setColor(int r, int g, int b);
+};
