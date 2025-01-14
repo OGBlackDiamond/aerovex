@@ -3,7 +3,7 @@
 #include "include/PhysicsObject.h"
 using namespace std;
 // instantiates a new phyfunc class
-// g++ phycicsengine.cpp -o test && ./test
+// g++ physicsengine.cpp -o test && ./test
 
 PhysicsObject engine;
 
@@ -11,11 +11,14 @@ PhysicsObject engine;
 int main(){
     double time;
     int runs;
+    double forcex[1];
+    double forcey[1];
+    double forcez[1];
     cin >> runs;
     for (int i = 0; i < runs; i++){
     time += 0.1;
     cout << "time = " << time<< "\n";
-    engine.updateobj(time);
+    engine.updateObj(time,forcex,forcey,forcez);
     }
     //engine.updateobj(time);
     //engine.getPos();

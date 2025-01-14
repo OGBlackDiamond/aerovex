@@ -46,11 +46,11 @@ public:
     int getAccelY();
     int getAccelZ();
     double getGravity();
-    void updateObj(double time);
+    void updateObj(double time,double forcex[],double forcey[],double forcez[]);
     void updatePos(double time);
     void updateVelo(double time);
     void updateAccel(double time);
-    void updateForce(double forceX[],double forceY[],double forceZ[]);
+    void updateForce(double forcex[],double forcey[],double forcez[]);
     void detectCollisions();
 
 

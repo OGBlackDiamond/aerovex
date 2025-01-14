@@ -17,7 +17,7 @@ using namespace std;
         pos.y0 = 1;
         pos.z0 = 1;
 
-        velo.x = 0;
+        velo.x = 0; 
         velo.y = 0;
         velo.z = 0;
         velo.x0 = 0;
@@ -47,11 +47,11 @@ using namespace std;
 
         velo = velocity;
 
-        accel = acceleration
+        accel = acceleration;
 
         fore = force;
 
-        this->mass = mas;
+        this->mass = mass;
         this->radius = radius;
     }
 
@@ -62,11 +62,11 @@ using namespace std;
 
         velo = velocity;
 
-        accel = acceleration
+        accel = acceleration;
 
         fore = force;
 
-        this->mass = mas;
+        this->mass = mass;
 
         dX = dx;
         dY = dy;
@@ -94,7 +94,7 @@ using namespace std;
     int PhysicsObject::getAccelX(){
         return accel.x;
     }
-    int PhysicsObject::getaAccelY(){
+    int PhysicsObject::getAccelY(){
         return accel.y;
     }
     int PhysicsObject::getAccelZ(){
@@ -103,7 +103,9 @@ using namespace std;
     double PhysicsObject::getGravity(){
         return mass*9.8;
     }
-    void PhysicsObject::updateObj(double time){
+    void PhysicsObject::updateObj(double time,double forcex[],double forcey[],double forcez[]){
+        updateForce(forcex,forcey,forcez);
+
         updateAccel(time);
 
         updateVelo(time);
@@ -117,23 +119,24 @@ using namespace std;
         pos.z = pos.z0 + velo.z0*time + .5*accel.z*pow(time,2);
         
     }
-    void PhysicsObject::updatevelo(double time){
+    void PhysicsObject::updateVelo(double time){
         velo.x = velo.x0 + accel.x*time;
         velo.y = velo.y0 + accel.y*time;
         velo.z = velo.z0 + accel.z*time;
     }
-    void PhysicsObject::updateaccel(double time){
+    void PhysicsObject::updateAccel(double time){
         accel.x = fore.x/mass;
         accel.y = fore.y/mass;
         accel.z = fore.z/mass;
     }
-    void PhysicsObject::updateforce(double forcex[],double forcey[],double forcez[]){
+    void PhysicsObject::updateForce(double forcex[],double forcey[],double forcez[]){
         for (int i = 0; i < sizeof(forcex); i++)
         {
         fore.x += forcex[i];
         }
         for (int i = 0; i < sizeof(forcey); i++)
         {
+        fore.y -= mass*9.8;
         fore.y += forcey[i];
         }
         for (int i = 0; i < sizeof(forcez); i++)
@@ -142,7 +145,7 @@ using namespace std;
         }
 
     }
-    void PhysicsObject::detectcollisions(){
+    void PhysicsObject::detectCollisions(){
         if (true){
 
         }
