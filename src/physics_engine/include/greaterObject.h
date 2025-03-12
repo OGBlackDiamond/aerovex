@@ -3,6 +3,6 @@ class greaterObject
 {
 public:
 
-
+ greaterObject();
 
 };

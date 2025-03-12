@@ -4,3 +4,7 @@
 #include <iostream>
 
 physicsObject object[];
+greaterObject::greaterObject() {
+
+
+}

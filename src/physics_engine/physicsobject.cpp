@@ -1,6 +1,11 @@
 /*The start of the phycics engine.
 g++ phycicsfunctions.cpp -o test && ./test
 */
+
+/*
+Hunter was here!
+*/
+
 #include <ctgmath>
 #include <iostream>
 #include "include/physicsObject.h"
