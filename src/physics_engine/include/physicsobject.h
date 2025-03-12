@@ -1,6 +1,6 @@
 #define PHYSICSOBJECT_H
 
-class PhysicsObject
+class physicsObject
 {
 public:
 
@@ -20,6 +20,7 @@ public:
     double dX;
     double dY;
     double dZ;
+    bool fix = false;
 
 
     //creates a new instance of the structs

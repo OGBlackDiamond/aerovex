@@ -3,7 +3,7 @@ g++ phycicsfunctions.cpp -o test && ./test
 */
 #include <ctgmath>
 #include <iostream>
-#include "include/PhysicsObject.h"
+#include "include/physicsObject.h"
 using namespace std;
 
     // constructor for the class
@@ -134,9 +134,10 @@ using namespace std;
         {
         fore.x += forcex[i];
         }
+        fore.y -= mass*9.8;
         for (int i = 0; i < sizeof(forcey); i++)
         {
-        fore.y -= mass*9.8;
+        
         fore.y += forcey[i];
         }
         for (int i = 0; i < sizeof(forcez); i++)

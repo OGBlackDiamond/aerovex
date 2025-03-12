@@ -1,11 +1,11 @@
 #include <ctgmath>
 #include <iostream>
-#include "include/PhysicsObject.h"
+#include "include/physicsObject.h"
 using namespace std;
 // instantiates a new phyfunc class
 // g++ physicsengine.cpp -o test && ./test
 
-PhysicsObject engine;
+physicsObject engine;
 
 // main methed used for testing will be removed later
 int main(){
